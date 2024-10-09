@@ -13,6 +13,8 @@
 </head>
 
 <body>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @include('sweetalert::alert')
     <x-navbar></x-navbar>
     <main>
         <div>

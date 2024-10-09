@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StoreBukuRequest;
 use App\Http\Requests\UpdateBukuRequest;
 use Illuminate\Support\Facades\Storage;
+use RealRashid\SweetAlert\Facades\Alert;
 
 
 class BukuController extends Controller
@@ -45,6 +46,7 @@ class BukuController extends Controller
             $validatedData['sampul'] = $request->file('sampul')->store('/sampul-buku');
         }
         Buku::create($validatedData);
+        Alert::success('Buku berhasil ditambahkan');
         return redirect('/buku');
     }
 
@@ -88,6 +90,7 @@ class BukuController extends Controller
 
     Buku::where('id', $id)->update($validatedData);
 
+    Alert::success('Buku berhasil diupdate');
     return redirect('/buku');
 }
 
@@ -104,6 +107,7 @@ class BukuController extends Controller
             Storage::delete($test[0]->sampul);
         }
         Buku::destroy($id);
+        Alert::success('Buku berhasil dihapus');
         return redirect('/buku');
     }
 
